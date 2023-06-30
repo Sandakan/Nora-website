@@ -13,7 +13,7 @@ const LyricsLine = (props: Props) => {
 	}, [index, isActive]);
 
 	return (
-		<span className={`mb-1 md:mb-2 ${isActive && 'scale-75 opacity-25'} transition-[transform,scale]`} ref={lineRef}>
+		<span className={`mb-1 md:mb-4 ${isActive && 'scale-75 opacity-25'} transition-[transform,scale]`} ref={lineRef}>
 			{line}
 		</span>
 	);

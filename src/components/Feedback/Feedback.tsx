@@ -50,7 +50,7 @@ const feedbackList = [
 
 const Feedback = () => {
 	const { isDarkMode } = React.useContext(ThemeContext);
-	const [visibleFeedbackNumber, setVisibleFeedbackNumber] = React.useState(0);
+	const [visibleFeedbackNumber, setVisibleFeedbackNumber] = React.useState(-1);
 	const [isAnimationWorking, setIsAnimationWorking] = React.useState(false);
 	const containerRef = React.useRef<HTMLDivElement>(null);
 	const isVisible = useOnScreen(containerRef, { threshold: [0.1], rootMargin: '5%' });
@@ -58,6 +58,8 @@ const Feedback = () => {
 	React.useEffect(() => {
 		let intervalId: number | undefined;
 		if (isAnimationWorking && isVisible) {
+			setVisibleFeedbackNumber(0);
+
 			intervalId = setInterval(
 				() =>
 					setVisibleFeedbackNumber((prevIndex) => {
@@ -66,9 +68,12 @@ const Feedback = () => {
 					}),
 				5000
 			);
-		} else {
+		} else if (isVisible) {
 			clearInterval(intervalId);
 			setVisibleFeedbackNumber(0);
+		} else {
+			clearInterval(intervalId);
+			setVisibleFeedbackNumber(-1);
 		}
 
 		return () => clearInterval(intervalId);
@@ -111,7 +116,7 @@ const Feedback = () => {
 		<div
 			className="bg-texture dark:bg-texture-dark mt-12 pb-6 pt-2 shadow-inset-light dark:shadow-inset-dark"
 			style={{ backgroundImage: `url("${isDarkMode ? patternDark : patternLight}")` }}>
-			<div className="flex h-[20rem] flex-col items-center justify-center text-center">
+			<div className="flex h-[22rem] flex-col items-center justify-center text-center">
 				<p className="mb-4 py-2 text-3xl font-medium [text-wrap:balance]">What Users think about Nora</p>
 				<div
 					className={`grid grid-cols-[repeat(3,100%)] gap-12 overflow-y-scroll px-[25%] pb-6 md:overflow-hidden`}

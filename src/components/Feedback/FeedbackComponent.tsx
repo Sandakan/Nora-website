@@ -24,7 +24,7 @@ const FeedbackComponent = (props: Props) => {
 
 	return (
 		<div
-			className={`mx-auto flex min-h-[10rem] w-[60%] min-w-[12rem] max-w-[50rem] scale-75 cursor-pointer flex-col items-center justify-center rounded-xl bg-background-color px-10 py-2 opacity-75 shadow-xl transition-[opacity,transform,filter] dark:bg-dark-background-color sm:min-h-[14rem] sm:w-[70%] sm:px-12 sm:py-8 md:w-[90%] md:py-12 lg:min-h-[16rem] ${
+			className={`mx-auto flex min-h-[10rem] w-[60%] min-w-[12rem] max-w-[50rem] scale-75 cursor-pointer flex-col items-center justify-center rounded-xl bg-background-color px-10 py-2 opacity-75 shadow-xl transition-[opacity,transform,filter] dark:bg-dark-background-color sm:min-h-[14rem] sm:w-[70%] sm:px-12 sm:py-8 md:w-[90%] md:py-12 lg:min-h-[15rem] ${
 				isActive && '!scale-100 !opacity-100'
 			} `}
 			onClick={() => setVisibleFeebackIndex(index)}

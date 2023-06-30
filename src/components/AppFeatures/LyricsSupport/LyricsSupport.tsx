@@ -47,7 +47,7 @@ const LyricsSupport = () => {
 		<div
 			className="mx-auto grid h-[35rem] w-[90%] grid-rows-2 items-center md:grid-cols-[1fr_40%] md:grid-rows-none"
 			ref={containerRef}>
-			<div className="lyrics-container flex h-[85%] flex-col items-center overflow-hidden rounded-3xl border-[6px] border-dashed border-foreground-color p-2 text-center  text-2xl font-medium leading-tight text-black dark:border-dark-foreground-color dark:text-white md:translate-x-4 md:!border-r-0 md:py-[4rem] md:pl-8 md:pr-12 md:text-4xl">
+			<div className="lyrics-container flex h-[85%] flex-col items-center justify-center overflow-hidden rounded-3xl border-[6px] border-dashed border-foreground-color p-2 text-center  text-2xl font-medium leading-tight text-black dark:border-dark-foreground-color dark:text-white md:translate-x-4 md:!border-r-0 md:py-[4rem] md:pl-8 md:pr-12 md:text-4xl">
 				{lyricsLineComponents}
 			</div>
 			<div className="saying-container flex h-full -translate-y-8 flex-col items-center justify-center rounded-3xl bg-foreground-color  px-4 py-2 shadow-xl dark:bg-dark-foreground-color md:-translate-x-2 md:translate-y-0 md:items-start md:p-8 md:pl-12">
