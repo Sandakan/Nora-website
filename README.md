@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://raw.githubusercontent.com/Sandakan/Nora/minor-release/assets/other/nora_logo_banner.webp">
+    <img src="https://raw.githubusercontent.com/Sandakan/Nora/minor-release/resources/other/nora_logo_banner.webp">
     <h1>Nora Website</h1>
     <div>
         <a href="https://app.netlify.com/sites/noramusic/deploys">
@@ -15,5 +15,5 @@ This is the website for [Nora](https://github.com/Sandakan/Nora), the music play
 <br/>
 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/Sandakan/Nora/minor-release/assets/other/artwork%200.webp">
+    <img src="https://raw.githubusercontent.com/Sandakan/Nora/minor-release/resources/other/artwork%200.webp">
 </div>
