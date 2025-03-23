@@ -53,10 +53,14 @@ const Feedback = () => {
 	const [visibleFeedbackNumber, setVisibleFeedbackNumber] = React.useState(-1);
 	const [isAnimationWorking, setIsAnimationWorking] = React.useState(false);
 	const containerRef = React.useRef<HTMLDivElement>(null);
-	const isVisible = useOnScreen(containerRef, { threshold: [0.1], rootMargin: '5%' });
+	const isVisible = useOnScreen(containerRef, {
+		threshold: [0.1],
+		rootMargin: '5%',
+	});
 
 	React.useEffect(() => {
-		let intervalId: number | undefined;
+		let intervalId: NodeJS.Timeout | undefined;
+
 		if (isAnimationWorking && isVisible) {
 			setVisibleFeedbackNumber(0);
 
@@ -115,7 +119,9 @@ const Feedback = () => {
 	return (
 		<div
 			className="bg-texture dark:bg-texture-dark mt-12 pb-6 pt-2 shadow-inset-light dark:shadow-inset-dark"
-			style={{ backgroundImage: `url("${isDarkMode ? patternDark : patternLight}")` }}>
+			style={{
+				backgroundImage: `url("${isDarkMode ? patternDark : patternLight}")`,
+			}}>
 			<div className="flex h-[22rem] flex-col items-center justify-center text-center">
 				<p className="mb-4 py-2 text-3xl font-medium [text-wrap:balance]">What Users think about Nora</p>
 				<div
