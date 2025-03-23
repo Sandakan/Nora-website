@@ -10,6 +10,12 @@ const INTERCHANGABLE_ARCHS = [
 	['arm64', 'aarch64'],
 ];
 
+export const OS_NAMES: Record<OsTypes, string> = {
+	mac: 'Mac OS',
+	win: 'Windows',
+	linux: 'Linux',
+};
+
 export const getAssetMetadata = (asset: Asset): AssetMetadata | null => {
 	const match = ASSET_METADATA_REGEX.exec(asset.name);
 	ASSET_METADATA_REGEX.lastIndex = 0;

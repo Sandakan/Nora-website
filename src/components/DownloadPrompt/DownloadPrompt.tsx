@@ -6,9 +6,14 @@ import packageJson from '../../../package.json' with { type: 'json' };
 import ReleaseNotesContext from '../../contexts/ReleaseNotesContext.tsx';
 import patternLight from '../../assets/images/pattern-light.svg';
 import patternDark from '../../assets/images/pattern-dark.svg';
-import { fetchLatestRelease, selectAssetForCurrentSystem } from '../../utils/getLatestReleaseForCurrentSystem.ts';
+import {
+	fetchLatestRelease,
+	OS_NAMES,
+	selectAssetForCurrentSystem,
+} from '../../utils/getLatestReleaseForCurrentSystem.ts';
 import { faApple, faGithub, faLinux, faWindows } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { GithubLatestReleaseAPI } from '../../@types/github_latest_release_api';
 
 const parser = new UAParser();
 const currentOs = parser.getOS().name;
@@ -18,6 +23,7 @@ const DownloadPrompt = () => {
 	const { isDarkMode } = React.useContext(ThemeContext);
 	const releaseNotes = React.useContext(ReleaseNotesContext);
 
+	const [latestRelease, setLatestRelease] = React.useState<GithubLatestReleaseAPI>();
 	const [assets, setAssets] = React.useState<ReturnType<typeof selectAssetForCurrentSystem>>();
 
 	const latestVersion = React.useMemo(() => {
@@ -38,6 +44,7 @@ const DownloadPrompt = () => {
 
 	useEffect(() => {
 		fetchLatestRelease().then((data) => {
+			setLatestRelease(data);
 			if (data && currentOs && currentArch) {
 				const asset = selectAssetForCurrentSystem(data, currentOs, currentArch);
 
@@ -102,7 +109,7 @@ const DownloadPrompt = () => {
 										rel="noopener noreferrer"
 										className="mt-2 flex items-center rounded-full border-2 border-solid border-[#fff] bg-foreground-color px-8 py-2 text-lg font-medium transition-colors hover:border-foreground-color dark:border-dark-foreground-color dark:text-font-color dark:hover:border-foreground-color">
 										{icon && <FontAwesomeIcon icon={icon} className="mr-2" />}
-										Download for {asset.os}
+										<p>Download for {OS_NAMES[asset.os]}</p>
 									</a>
 								);
 							})
@@ -118,10 +125,7 @@ const DownloadPrompt = () => {
 						)}
 					</div>
 
-					<p className="mt-2 text-xs">Clicking Download Now will redirect you to Nora's Github Releases Page.</p>
-
-					<p className="text-xs">
-						Visit{' '}
+					<div className="mt-2 text-xs flex gap-1 items-center">
 						<a
 							href={packageJson.appInfo.changelog_url}
 							target="_blank"
@@ -129,9 +133,26 @@ const DownloadPrompt = () => {
 							className="underline"
 							title="Nora's Changelog">
 							Changelog
-						</a>{' '}
-						to see what's changed in this release.
-					</p>
+						</a>
+						|
+						<a
+							href={latestRelease?.html_url}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="underline"
+							title="Other downloads">
+							Other downloads
+						</a>
+						|
+						<a
+							href={packageJson.appInfo.nora_releases_url}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="underline"
+							title="Older releases">
+							Older releases
+						</a>
+					</div>
 				</div>
 			)}
 		</>
