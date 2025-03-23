@@ -1,8 +1,8 @@
 import { ArchTypes, AssetMetadata, OsTypes } from '../@types/app';
 import type { Asset, GithubLatestReleaseAPI } from '../@types/github_latest_release_api';
 
-const GITHUB_RELEASE_URL = 'https://api.github.com/repos/Sandakan/Nora/releases/tags/v3.1.0-stable.pre-release.4';
-// const GITHUB_RELEASE_URL = 'https://api.github.com/repos/Sandakan/Nora/releases/latest';
+// const GITHUB_RELEASE_URL = 'https://api.github.com/repos/Sandakan/Nora/releases/tags/v3.1.0-stable.pre-release.4';
+export const GITHUB_LATEST_RELEASE_URL = 'https://api.github.com/repos/Sandakan/Nora/releases/latest';
 const ASSET_METADATA_REGEX = /v?(?<version>\d[\w.]+)-(?<release>\w+)-(?<os>\w+)-(?<arch>\w+)\.(?<ext>\w+)$/gm;
 
 const INTERCHANGABLE_ARCHS = [
@@ -93,7 +93,7 @@ export const selectAssetForCurrentSystem = (data: GithubLatestReleaseAPI, os: st
 };
 
 export const fetchLatestRelease = async () => {
-	const res = await fetch(GITHUB_RELEASE_URL);
+	const res = await fetch(GITHUB_LATEST_RELEASE_URL);
 	const data = (await res.json()) as GithubLatestReleaseAPI;
 
 	return data;
