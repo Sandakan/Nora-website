@@ -19,7 +19,8 @@ const LyricsSupport = () => {
 	const isVisible = useOnScreen(containerRef);
 
 	React.useEffect(() => {
-		let intervalId: number | undefined;
+		let intervalId: NodeJS.Timeout | undefined;
+
 		if (isAnimationWorking) {
 			if (isVisible) {
 				intervalId = setInterval(() => {

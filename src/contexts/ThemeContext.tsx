@@ -1,10 +1,12 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
 export interface ThemeContextInterface {
-	isDarkMode: boolean;
-	updateTheme: (theme?: 'dark' | 'light') => void;
+  isDarkMode: boolean;
+  updateTheme: (theme?: "dark" | "light") => void;
 }
 
-const ThemeContext = createContext<ThemeContextInterface>({} as ThemeContextInterface);
+const ThemeContext = createContext<ThemeContextInterface>(
+  {} as ThemeContextInterface,
+);
 
 export default ThemeContext;
