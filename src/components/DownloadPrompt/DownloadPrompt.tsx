@@ -94,23 +94,30 @@ const DownloadPrompt = () => {
 					</p>
 
 					<p className="mt-2 text-xs">
-						Operating System: {currentOs} | Architecture: {currentArch}
+						Detected OS: {currentOs} | Architecture: {currentArch}
 					</p>
 
-					<div className="download-buttons-container mt-2 flex items-center justify-center gap-2">
+					<div className="download-buttons-container mt-2 flex items-center justify-center gap-2 flex-wrap">
 						{Array.isArray(assets) ? (
 							assets.map((asset) => {
 								const icon = osIcon(asset.os);
 
 								return (
-									<a
-										href={asset.download_url}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="mt-2 flex items-center rounded-full border-2 border-solid border-[#fff] bg-foreground-color px-8 py-2 text-lg font-medium transition-colors hover:border-foreground-color dark:border-dark-foreground-color dark:text-font-color dark:hover:border-foreground-color">
-										{icon && <FontAwesomeIcon icon={icon} className="mr-2" />}
-										<p>Download for {OS_NAMES[asset.os]}</p>
-									</a>
+									<div className="flex items-center flex-col">
+										<a
+											href={asset.download_url}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="mt-2 flex items-center rounded-full border-2 border-solid border-[#fff] bg-foreground-color px-8 py-2 text-lg font-medium transition-colors hover:border-foreground-color dark:border-dark-foreground-color dark:text-font-color dark:hover:border-foreground-color">
+											{icon && <FontAwesomeIcon icon={icon} className="mr-2" />}
+											<p>Download for {OS_NAMES[asset.os]}</p>
+										</a>
+										{assets.length > 0 && (
+											<p className="text-sm font-normal h-min bg-background-color/75 dark:bg-dark-background-color/75 w-fit px-4 py-1 rounded-b-md text-center">
+												{asset.arch} - {asset.ext}
+											</p>
+										)}
+									</div>
 								);
 							})
 						) : (
@@ -125,7 +132,7 @@ const DownloadPrompt = () => {
 						)}
 					</div>
 
-					<div className="mt-2 text-xs flex gap-1 items-center">
+					<div className="mt-4 text-xs flex gap-1 items-center">
 						<a
 							href={packageJson.appInfo.changelog_url}
 							target="_blank"

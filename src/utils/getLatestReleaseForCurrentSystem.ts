@@ -12,7 +12,7 @@ const INTERCHANGABLE_ARCHS = [
 
 export const OS_NAMES: Record<OsTypes, string> = {
 	mac: 'Mac OS',
-	win: 'Windows',
+	win: 'Windows 10+',
 	linux: 'Linux',
 };
 
