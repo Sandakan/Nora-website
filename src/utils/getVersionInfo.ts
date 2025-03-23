@@ -3,29 +3,31 @@
 // Pre-release is in the form (alpha|beta). YYYYMMDDNN where NN is a number in range 0 to 99.
 
 const semVerRegex =
-	/^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
+  /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
 
 interface VersionInfo {
-	major: string;
-	minor: string;
-	patch: string;
+  major: string;
+  minor: string;
+  patch: string;
 }
 
 interface ExtendedVersionInfo extends VersionInfo {
-	preRelease?: string;
-	releasePhase?: string;
+  preRelease?: string;
+  releasePhase?: string;
 }
 
-export const getVersionInfo = (versionString?: string): ExtendedVersionInfo | undefined => {
-	if (versionString) {
-		const versionData = versionString.match(semVerRegex);
+export const getVersionInfo = (
+  versionString?: string,
+): ExtendedVersionInfo | undefined => {
+  if (versionString) {
+    const versionData = versionString.match(semVerRegex);
 
-		if (versionData) {
-			const [, major, minor, patch, preRelease] = versionData;
-			const releasePhase = preRelease?.replace(/[^a-zA-Z]/gi, '');
+    if (versionData) {
+      const [, major, minor, patch, preRelease] = versionData;
+      const releasePhase = preRelease?.replace(/[^a-zA-Z]/gi, "");
 
-			return { major, minor, patch, preRelease, releasePhase };
-		}
-	}
-	return undefined;
+      return { major, minor, patch, preRelease, releasePhase };
+    }
+  }
+  return undefined;
 };

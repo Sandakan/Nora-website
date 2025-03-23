@@ -28,3 +28,16 @@ export interface Notes {
 export interface Fixed {
 	note: string;
 }
+
+export type OsTypes = 'win' | 'linux' | 'mac';
+export type ArchTypes = 'x64' | 'arm64' | 'x86_64';
+
+export interface AssetMetadata {
+	os: OsTypes;
+	arch: ArchTypes;
+	version: string;
+	release: string;
+	ext: string;
+	download_url: string;
+	download_count: number;
+}

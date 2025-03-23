@@ -10,7 +10,8 @@
 
 <br>
 
-This is the website for [Nora](https://github.com/Sandakan/Nora), the music player for Windows and Linux.
+This is the website for [Nora](https://github.com/Sandakan/Nora), the music
+player for Windows and Linux.
 
 <br/>
 
