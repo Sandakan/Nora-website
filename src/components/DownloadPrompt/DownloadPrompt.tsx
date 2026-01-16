@@ -103,7 +103,9 @@ const DownloadPrompt = () => {
 								const icon = osIcon(asset.os);
 
 								return (
-									<div className="flex items-center flex-col">
+									<div 
+									key={asset.download_url}
+									className="flex items-center flex-col">
 										<a
 											href={asset.download_url}
 											target="_blank"
