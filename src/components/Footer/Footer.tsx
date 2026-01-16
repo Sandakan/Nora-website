@@ -47,14 +47,14 @@ const Footer = () => {
       <div className="footer-footer relative bottom-0 flex flex-col items-center justify-center px-2 text-black dark:text-white lg:flex-row lg:justify-between">
         <div className="order-2 text-center text-xs lg:text-left">
           <p className="mb-[0.1rem]">
-            Copyright © 2023{" "}
+            Copyright &copy; {new Date().getFullYear()}{" "}
             <a href="https://github.com/Sandakan" className="underline">
               Sandakan Nipunajith
             </a>
             .
           </p>
           <p>
-            Built with <span className="text-red-500">❤</span>{" "}
+            Built with ❤️{" "}
             by Sandakan and many other contributors.
           </p>
         </div>
